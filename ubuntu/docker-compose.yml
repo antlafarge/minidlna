@@ -1,0 +1,9 @@
+services:
+    minidlna-ubuntu:
+        image: minidlna-ubuntu
+        container_name: minidlna-ubuntu
+        restart: on-failure:2
+        volumes:
+            - "/mnt/raid/Shared/Videos:/var/lib/minidlna:ro"
+        ports:
+            - "8200:8200"
