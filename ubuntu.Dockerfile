@@ -7,9 +7,5 @@ RUN apt update \
  && apt clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p "/var/lib/minidlna/Audio"
-RUN mkdir -p "/var/lib/minidlna/Pictures"
-RUN mkdir -p "/var/lib/minidlna/Videos"
-
 ENTRYPOINT ["minidlnad"]
-CMD []
+CMD ["-d"]

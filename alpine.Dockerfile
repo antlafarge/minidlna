@@ -4,13 +4,9 @@ STOPSIGNAL SIGTERM
 
 RUN apk update \
  && apk -U upgrade \
- && apk add --no-cache bash minidlna
+ && apk add --no-cache minidlna
 
-RUN mkdir -p "/var/lib/minidlna/Audio"
-RUN mkdir -p "/var/lib/minidlna/Pictures"
-RUN mkdir -p "/var/lib/minidlna/Videos"
-
-EXPOSE 1900/UDP 
+EXPOSE 1900 8200
 
 ENTRYPOINT ["minidlnad"]
-CMD []
+CMD ["-d"]
