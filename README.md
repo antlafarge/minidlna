@@ -37,16 +37,6 @@ docker run -d \
     --name minidlna \
     antlafarge/minidlna:latest
 
-# Override entrypoint arguments (enable log debug level 10)
-docker run -d \
-    -v /storage/Shared/Audio/:/var/lib/minidlna/Audio/:ro \
-    -v /storage/Shared/Pictures/:/var/lib/minidlna/Pictures/:ro \
-    -v /storage/Shared/Videos/:/var/lib/minidlna/Videos/:ro \
-    -p 445:445/tcp \
-    -p 137:137/udp \
-    --name minidlna \
-    antlafarge/minidlna:dev-alpine --foreground --no-process-group --debug-stdout --debuglevel=10
-
 # Override entrypoint (sh)
 docker run --rm -it \
     -v /storage/Shared/Audio/:/var/lib/minidlna/Audio/:ro \
