@@ -1,0 +1,33 @@
+name: Dockerhub-release
+
+env:
+  IMAGE_NAME: antlafarge/minidlna
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 13 * *'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  Release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Re-tag dev images
+        run: |
+          docker buildx imagetools create ${{ env.IMAGE_NAME }}:dev-alpine -t ${{ env.IMAGE_NAME }}:alpine
+          docker buildx imagetools create ${{ env.IMAGE_NAME }}:dev-alpine -t ${{ env.IMAGE_NAME }}:latest
+      - name: Logout from Docker Hub
+        run: docker logout

@@ -1,9 +1,0 @@
-services:
-    minidlna-alpine:
-        image: minidlna-alpine
-        container_name: minidlna-alpine
-        restart: on-failure:2
-        volumes:
-            - "/mnt/raid/Shared/Videos:/var/lib/minidlna:ro"
-        ports:
-            - "8200:8200"

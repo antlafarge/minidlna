@@ -2,13 +2,15 @@ FROM alpine:latest
 
 STOPSIGNAL SIGTERM
 
-RUN apk -U upgrade \
-	&& apk add --no-cache bash minidlna
+RUN apk update \
+ && apk -U upgrade \
+ && apk add --no-cache bash minidlna
 
-WORKDIR /app
+RUN mkdir -p "/var/lib/minidlna/Audio"
+RUN mkdir -p "/var/lib/minidlna/Pictures"
+RUN mkdir -p "/var/lib/minidlna/Videos"
 
-COPY app.sh ./
+EXPOSE 1900/UDP 
 
-RUN chmod 777 app.sh
-
-CMD ["/bin/bash", "-c", "./app.sh"]
+ENTRYPOINT ["minidlnad"]
+CMD []
