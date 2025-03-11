@@ -1,7 +1,8 @@
 MINIDLNA
 ========
 
-`/opt/` is scanned and shared by minidlna.
+`/opt/` is scanned and shared by minidlna.  
+minidlna infos (scanned files count and connected devices) are displayed here : http://localhost:8200
 
 # Docker
 
