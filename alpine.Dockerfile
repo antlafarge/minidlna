@@ -7,6 +7,7 @@ LABEL dockerhub="https://hub.docker.com/r/antlafarge/minidlna" \
       maintainer.github="https://github.com/antlafarge" \
       maintainer.dockerhub="https://hub.docker.com/u/antlafarge"
 
+ENV TZ='Europe/Paris'
 ENV LANG='C.UTF-8'
 ENV LC_ALL='C.UTF-8'
 
