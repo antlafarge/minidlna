@@ -10,8 +10,6 @@ LABEL dockerhub="https://hub.docker.com/r/antlafarge/minidlna" \
 ENV LANG='C.UTF-8'
 ENV LC_ALL='C.UTF-8'
 
-STOPSIGNAL SIGTERM
-
 RUN apk update \
  && apk -U upgrade \
  && apk add --no-cache minidlna
